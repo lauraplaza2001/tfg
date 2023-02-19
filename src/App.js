@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+
+
+function App() { 
+    /*const clientId='809085480924-kd4b5cqfatoiirqu60ehktf5u7iobnnu.apps.googleusercontent.com'*/ 
+    const [user,setUser] = useState({});
+
   return (
     <div className="App">
       <header className="App-header">
