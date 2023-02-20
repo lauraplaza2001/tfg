@@ -17,11 +17,11 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.instagram.com/jaime14vrs/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          VAMOS A POR EL TFG
+          te quiero jeje
         </a>
       </header>
     </div>
