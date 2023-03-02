@@ -6,7 +6,7 @@ import './App.css';
 
 function App() { 
     /*const clientId='809085480924-kd4b5cqfatoiirqu60ehktf5u7iobnnu.apps.googleusercontent.com'*/ 
-    const [user,setUser] = useState({});
+
 
   return (
     <div className="App">
