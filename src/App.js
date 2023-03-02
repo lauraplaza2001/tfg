@@ -13,16 +13,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          hola
         </p>
-        <a
-          className="App-link"
-          href="https://www.instagram.com/jaime14vrs/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          te quiero jeje
-        </a>
+      
       </header>
     </div>
   );
