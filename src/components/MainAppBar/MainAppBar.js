@@ -26,7 +26,7 @@ const MainAppBar = ({ login }) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [log, setLog] = useState(false);
     const [photo, setPhoto] = useState("");
-    const [user,setUser] = useState(""); 
+    const [setUser] = useState(""); 
   
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
@@ -99,10 +99,10 @@ const MainAppBar = ({ login }) => {
         <Toolbar disableGutters>
         <FitnessCenterIcon  onClick={() => navigate("/")} sx={{ display: {color: 'black', xs: 'none', md: 'flex'}, mr: 1 }} />
         <Typography
-              variant="h4"
+              variant="h5"
               noWrap
               component="a"
-             
+
               onClick={() => navigate("/")}
               sx={{
                 mr: 2,

@@ -14,7 +14,7 @@ import Main from './pages/Main/Main';
 
 function App() {
  /*const clientId='809085480924-kd4b5cqfatoiirqu60ehktf5u7iobnnu.apps.googleusercontent.com'*/ 
-  const [user,setUser] = useState({});
+  const [setUser] = useState({});
   
 
   return (
