@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import React, {  useState }  from 'react';
+import MainAppBar from './components/MainAppBar/MainAppBar';
+import Main from './pages/Main/Main';
 
 
 
 
-function App() { 
-    /*const clientId='809085480924-kd4b5cqfatoiirqu60ehktf5u7iobnnu.apps.googleusercontent.com'*/ 
 
+
+
+function App() {
+ /*const clientId='809085480924-kd4b5cqfatoiirqu60ehktf5u7iobnnu.apps.googleusercontent.com'*/ 
+  const [user,setUser] = useState({});
+  
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          hola
-        </p>
-      
-      </header>
-    </div>
+    <GoogleOAuthProvider clientId="809085480924-kd4b5cqfatoiirqu60ehktf5u7iobnnu.apps.googleusercontent.com">
+      <BrowserRouter>
+        <MainAppBar login={setUser}/>
+        <Routes>
+          <Route path="" element={<Main />} /> 
+        
+        </Routes>
+      </BrowserRouter>
+ 
+  </GoogleOAuthProvider>
   );
 }
 
 export default App;
+
+
+
+
