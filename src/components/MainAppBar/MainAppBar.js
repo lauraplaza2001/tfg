@@ -13,7 +13,10 @@ import axios from 'axios';
 import Image from 'mui-image';
 import { useNavigate } from 'react-router-dom';
 import { Styler } from '../Styler/Styler';
-import AdbIcon from '@mui/icons-material/Adb';
+
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import MenuItem from '@mui/material/MenuItem';
+import Link from '@mui/material/Link';
 
 
 
@@ -85,126 +88,135 @@ const MainAppBar = ({ login }) => {
         />);
       }
     }
-  
-    return (
-      <AppBar position="static" sx={{ backgroundColor: "#B84E4E" }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-           
-            <Typography
+
+
+
+
+    
+  return (
+    <AppBar position="static" sx={{ backgroundColor: "#B84E4E" }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+        <FitnessCenterIcon  onClick={() => navigate("/")} sx={{ display: {color: 'black', xs: 'none', md: 'flex'}, mr: 1 }} />
+        <Typography
               variant="h4"
               noWrap
               component="a"
+             
               onClick={() => navigate("/")}
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontFamily:   '"Segoe UI Symbol"',
-                fontWeight: 700,
-                letterSpacing: '.1rem',
+                fontWeight: 'bold',
                 color: 'black',
-                textDecoration: 'none',
+                align: 'right'
               }}
             >
            Functional Training Assitance
             </Typography>
+    
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              <MenuItem key="Ejercicios" onClick={handleCloseNavMenu}>
+                <Link
+                  sx={{
+                    textAling: "center",
+                    color: "black",
+                  }}
+                  onClick={() => navigate("/Ejercicios")}
+                  underline="none"
+                >
+                  Ejercicios
+                </Link>
+              </MenuItem>
+              <MenuItem key="Admin" onClick={handleCloseNavMenu}>
+                <Link
+                  sx={{
+                    textAling: "center",
+                    color: "black",
+                  }}
+                  onClick={() => navigate("/")}
+                  underline="none"
+                >
+                 Admin
+                </Link>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'roboto',
+              fontWeight: 700,
+              letterSpacing: '.1rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+           Functional Training Assitance
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              key="Ejercicios"
+              onClick={() => navigate("/Ejercicios")}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Ejercicios
+            </Button>
+            <Button
+              key="Admin"
+              onClick={() => navigate("/Admin")}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+             Admin
+            </Button>
+          </Box>
+          <LogButton />
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 
 
-            
-  
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' },
-                }}
-              >
-            {/*    <MenuItem key="logs" onClick={handleCloseNavMenu}>
-                  <Link
-                    sx={{
-                      textAling: "center",
-                      color: "black",
-                    }}
-                    onClick={() => navigate("/logs")}
-                    underline="none"
-                  >
-                    Mostrar logs
-                  </Link>
-                </MenuItem> */}
-               
-
-
-               
-              </Menu>
-            </Box>
-           
-       {/*}     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                key="logs"
-                onClick={() => navigate("/logs")}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Mostrar logs
-              </Button>
-            
-            </Box>  */}
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                key="fotos"
-                onClick={() => navigate("/fotos")}
-                disabled={user.email === undefined}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                UP Publicaciones
-              </Button>
-            
-            </Box>
-
-           
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                key="logs"
-                onClick={() => navigate("/showpublicaciones")}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Mostrar publicaciones
-              </Button>
-            
-            </Box>
 
 
 
 
-            <LogButton />
-          </Toolbar>
-        </Container>
-      </AppBar>
-    );
   }
   export default MainAppBar;
 
