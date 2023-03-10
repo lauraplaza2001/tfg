@@ -5,11 +5,13 @@ import { Box, Container } from '@mui/system';
 import {  Typography } from '@mui/material';
 import { Styler } from '../../components/Styler/Styler'
 import foto from "../../images/portada.jpg";
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const Main = () => {
+    const navigate = useNavigate();
 
 
     return(
@@ -90,6 +92,7 @@ const Main = () => {
                     fontSize: "20px",
                     height: "60px",
                     width: "200px" }}
+                    onClick={() => navigate("/Ejercicios")}
                 >
                     Comenzar
                 </Button>
