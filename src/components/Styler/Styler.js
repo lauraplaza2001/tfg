@@ -58,6 +58,13 @@ export const Styler = {
         padding: '20px',
         backgroundColor: '#f5f5f5',
     },
+    mibutton: {
+        backgroundColor:  "#B84E4E",
+        height: "60px",
+        width: "50px",
+        fontFamily:   '"Segoe UI Symbol"',
+
+    },
     wrapper: {
         width: '100%',
         display: 'flex',
@@ -117,5 +124,12 @@ export const Styler = {
             fontWeight: '600',
             fontSize: '16px',
         }
+    },
+    textosombra: {
+        fontFamily:   '"Segoe UI Symbol"',  
+        fontWeight: 'bold',
+        textShadowOffset:{height:2, width:2},
+        textShadowColor: 'red'
     }
+    
 };
