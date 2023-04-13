@@ -26,7 +26,7 @@ const MainAppBar = ({ login }) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [log, setLog] = useState(false);
     const [photo, setPhoto] = useState("");
-    const [setUser] = useState(""); 
+    const [user,setUser] = useState(""); 
   
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
@@ -37,7 +37,7 @@ const MainAppBar = ({ login }) => {
     };
   
     const logIn = (token) => {
-      axios.get("http://localhost:8000/usuario/logIn/" + token.credential).then((response) => {
+      axios.get("http://localhost:8000/usuarios/logIn/" + token.credential).then((response) => {
         
         setPhoto(response.data.foto);
         login(response.data.usuario);

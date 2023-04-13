@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Main = () => {
+const Main = ({usuario}) => {
     const navigate = useNavigate();
 
 
