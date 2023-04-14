@@ -17,6 +17,7 @@ import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 import Chip from '@mui/material/Chip';
+import ListaEjercicios from "../../components/ListaEjercicios/ListaEjercicios";
 
 
 
@@ -139,7 +140,9 @@ const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
   };
 
 
-
+  if (cargando) {
+    return <CircularProgress />;
+}
     return( 
       <Box
       sx={{ display: 'flex', overflow: 'hidden', bgcolor: '#FFFFFF'}}>
@@ -262,28 +265,9 @@ const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
               </Box>
             </Grid>
 
+            <ListaEjercicios locations={ejercicios}></ListaEjercicios>
 
 
-
-
-            
-           
-
-
-
-
-        
-          
-        
-
-
-
-
-            
-
-
-
-      
           </Grid>
         </Container>
       </Box>

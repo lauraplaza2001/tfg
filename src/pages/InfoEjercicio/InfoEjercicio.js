@@ -14,8 +14,9 @@ import { Styler } from '../../components/Styler/Styler'
 
 
 
-const InfoEjercicio = ({usuario}) => {
-    const [ejercicio,setEjercicio] = useState([]);
+const InfoEjercicio = ({usuario }) => {
+    const ejercicio = useLocation().state.ejercicio
+ 
     const [gruposMusculares,setGruposMusculares] = useState("");
     const [cargando, setCargando] = useState(true);
     const [texto, setTexto] = useState("");
@@ -24,9 +25,10 @@ const InfoEjercicio = ({usuario}) => {
   
 
     const getEjercicio = async () => {
-        const ej = await axios.get("http://localhost:8001/ejercicios/Deadlift")
+      {/*   const ej = await axios.get("http://localhost:8001/ejercicios/filter/nombre/Deadlift")
         setEjercicio(ej.data);
         console.log(ejercicio);
+    */}
         setCargando(false);
         getTips()
         getGruposMusculares()
@@ -53,7 +55,7 @@ const InfoEjercicio = ({usuario}) => {
             let tipText = "";
           
            
-            ejercicio[0].gruposMusculares.forEach(function(currentValue, index) {
+            ejercicio.gruposMusculares.forEach(function(currentValue, index) {
               if(currentValue==="PIERNAS"){
                tipText+="Piernas. "
               }
@@ -86,7 +88,7 @@ const InfoEjercicio = ({usuario}) => {
             let tipText = "";
           
            
-            ejercicio[0].tips.forEach(function(currentValue, index) {
+            ejercicio.tips.forEach(function(currentValue, index) {
               if(currentValue==="PESODISTRIBUIDOENTODOELPIE"){
                tipText+="Distribuya el peso en todo el pie. "
               }
@@ -189,7 +191,7 @@ const InfoEjercicio = ({usuario}) => {
                 <Grid item xs={5} md={5}>
                     <Box sx={item}>
                     <Typography backgroundColor="#E9E2E2" variant="h6" sx={{ my: 1, fontFamily: '"Segoe UI Symbol"' }}>
-                        <b>DIFICULTAD: </b> {ejercicio[0].dificultad}
+                        <b>DIFICULTAD: </b> {ejercicio.dificultad}
                     </Typography>
                     <Typography backgroundColor="#E9E2E2" variant="h6" sx={{my: 1, fontFamily: '"Segoe UI Symbol"' }}>
                         <b>GRUPOS MUSCULARES: </b> {
@@ -197,7 +199,7 @@ const InfoEjercicio = ({usuario}) => {
                         }
                     </Typography>
                     <Typography backgroundColor="#E9E2E2" variant="h6" sx={{my: 2, fontFamily: '"Segoe UI Symbol"'}} >
-                        {ejercicio[0].descripcion}
+                        {ejercicio.descripcion}
                     </Typography>
                     </Box>
                 </Grid>
