@@ -18,7 +18,7 @@ const ListaEjercicios = ({locations }) => {
       {locations.map((ejercicio) => {
           return (
             <Grid key={ejercicio.nombre} item xs={12} sm={4} md={4} lg={3}>
-              <TarjetaEjercicio ejercicio={ejercicio}   />
+              <TarjetaEjercicio ejercicio={ejercicio}  />
             </Grid>
           );
         })}

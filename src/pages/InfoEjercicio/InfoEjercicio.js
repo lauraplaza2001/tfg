@@ -36,6 +36,7 @@ const InfoEjercicio = ({usuario }) => {
 
     useEffect(() => {
          getEjercicio()
+         console.log(usuario)
         
           }, [cargando]);
     
@@ -224,7 +225,9 @@ const InfoEjercicio = ({usuario }) => {
                     fontSize: "20px",
                     height: "60px",
                     width: "170px" }}
-                    onClick={() => navigate("/SubirVideo", {state: {usuario, ejercicio}})}
+                    onClick={() => 
+
+                      navigate("/SubirVideo", {state: {usuario, ejercicio}})}
                      >
                     Subir vídeo
                     </Button>

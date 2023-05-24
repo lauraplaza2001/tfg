@@ -11,16 +11,18 @@ import { Box, Container, Button, Typography, Grid } from '@mui/material';
 
 
 const SubirVideo = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const usuario = useLocation().state.usuario;
-  const ejercicio= useLocation().state.ejercicio[0];
+  const ejercicio= useLocation().state.ejercicio;
   //const texto = useState("")
   const [texto, setTexto] = useState("");
 
 
 
   useEffect(() => {
-    if(usuario.email === undefined){
+    console.log("usuairo " + usuario)
+    console.log(ejercicio)
+    if(usuario === undefined){
       alert("Inicie sesión para poder subir un vídeo")
        navigate("/");
    }
@@ -137,6 +139,8 @@ const {
           }).catch((response) =>{
               console.log(response)
           });
+  }else {
+    alert("ERROR, debes subir los dos vídeos antes de generar el informe")
   }
       
   }
@@ -191,10 +195,13 @@ const {
                         - Deberás grabarte dos vídeos : uno de <b>perfil </b> y otro de <b>frente a la cámara </b>
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"  align='center'  variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - Evita que haya más personas en el vídeo. Sólo debe aparecer <b>una persona </b> en el vídeo
+                        -Situese a <b>3</b> metros de distancia de la cámara. Sólo debe aparecer una persona  en el vídeo
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - Colócate en el <b> centro </b> de la cámara
+                        - Colócate en el <b> centro </b> del vídeo y sitúa el móvil en el suelo. Asegúrate de que esté recto.
+                    </Typography>
+                    <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
+                        - En el vídeo de perfil, haz que tu lado  <b>izquierdo</b> sea el más cercano a la cámara.
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
                         - No pulse generar informe hasta que no haya subido ambos vídeos
@@ -240,14 +247,15 @@ const {
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-                     <Cloudinary func={addVideoPerfil} nombre={"porbando"}></Cloudinary>
+                     <Cloudinary func={addVideoPerfil} nombre={usuario.email + Math.random() + "perfil"}></Cloudinary>
+                     <Cloudinary func={addVideoFrontal} nombre={usuario.email + Math.random() + "frontal"} ></Cloudinary>
                     </Typography>
                     </Box>
                 </Grid>
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-                    <Cloudinary func={addVideoFrontal} nombre={"esteeselnombre"} ></Cloudinary>
+                  
                     </Typography>
                     </Box>
                 </Grid>

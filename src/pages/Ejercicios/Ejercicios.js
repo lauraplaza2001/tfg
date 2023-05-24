@@ -92,20 +92,31 @@ const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
     }
 
     const busquedaGruposMusculares = async () => {
-      if (gruposMusculares.length == 0  ) {
-        getEjercicios()
-
-      }else{
-        const gruposMuscularesJSON= JSON.stringify(gruposMusculares)
-        const ej = await axios.get("http://localhost:8001/ejercicios/filter/gruposMusculares?lista=${gruposMuscularesJSON}")
+      if (gruposMusculares.length === 0) {
+        getEjercicios();
+      } else {
+        const ej = await axios.get(`http://localhost:8001/ejercicios/filter/gruposMusculares? =${gruposMusculares}`);
         setEjercicios(ej.data);
-        console.log(ejercicios);
-        console.log(dificultad);
         setCargando(false);
-
       }
-    }
+    };
+    
 
+{/*}
+    axios.get('http://localhost:8001/ejercicios/filter/gruposMusculares/', {
+      params: {
+        grupos_musculares: gruposMusculares. // Lista de grupos musculares a filtrar
+      }
+    })
+    .then(response => {
+      // Procesar la respuesta del servidor
+      console.log(response.data);
+    })
+    .catch(error => {
+      // Manejar errores de la petición HTTP
+      console.error(error);
+    });
+  */}
 
 
     
