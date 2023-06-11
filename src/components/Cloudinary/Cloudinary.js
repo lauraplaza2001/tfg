@@ -1,33 +1,40 @@
 import React, { Component } from "react";
-import { Button } from "@mui/material";
-
+import { Button, Snackbar } from "@mui/material";
+import PropTypes from "prop-types";
 
 class Cloudinary extends Component {
   constructor(props) {
     super(props);
-    this.nombre=props.nombre;
+    this.state = {
+      successMessageOpen: false,
     };
+  }
 
-  
+  handleSuccessMessageClose = () => {
+    this.setState({ successMessageOpen: false });
+  };
+
   componentDidMount() {
+    const { cloudName, uploadPreset, nombre, func } = this.props;
+
     var myWidget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "drcsegsao",
-        uploadPreset: "trabajofingrado",
+        cloudName: cloudName,
+        uploadPreset: uploadPreset,
         sources: ["local"],
         resourceType: "video",
         folder: "TFG",
-        public_id: this.nombre,
-
+        public_id: nombre,
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          this.props.func(result.info.secure_url);
-        //  myWidget.close();
+          func(result.info.secure_url);
+          this.setState({ successMessageOpen: true });
         }
       }
     );
-    document.getElementById("upload_widget").addEventListener(
+
+    document.getElementById(`upload_widget_${nombre}`).addEventListener(
       "click",
       function () {
         myWidget.open();
@@ -37,18 +44,44 @@ class Cloudinary extends Component {
   }
 
   render() {
+    const { nombre } = this.props;
+    const { successMessageOpen } = this.state;
+
     return (
-      <Button id="upload_widget" className="cloudinary-button" align="center"
-      color="error"
-      variant="outlined"    sx={{backgroundColor:  "black",
-      fontFamily:   '"Segoe UI Symbol"',
-      fontSize: "18px",
-      height: "60px",
-      width: "1640x" }}>
-        Subir Video
-      </Button>
+      <>
+        <Button
+          id={`upload_widget_${nombre}`}
+          className="cloudinary-button"
+          align="center"
+          color="error"
+          variant="outlined"
+          sx={{
+            backgroundColor: "black",
+            fontFamily: '"Segoe UI Symbol"',
+            fontSize: "18px",
+            height: "60px",
+            width: "164px",
+          }}
+        >
+          Subir Video
+        </Button>
+
+        <Snackbar
+          open={successMessageOpen}
+          autoHideDuration={3000}
+          onClose={this.handleSuccessMessageClose}
+          message="¡Video subido con éxito!"
+        />
+      </>
     );
   }
 }
+
+Cloudinary.propTypes = {
+  cloudName: PropTypes.string.isRequired,
+  uploadPreset: PropTypes.string.isRequired,
+  nombre: PropTypes.string.isRequired,
+  func: PropTypes.func.isRequired,
+};
 
 export default Cloudinary;

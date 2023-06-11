@@ -20,9 +20,10 @@ const SubirVideo = () => {
 
 
   useEffect(() => {
-    console.log("usuairo " + usuario)
+  
+   // console.log( usuario.nombre)
     console.log(ejercicio)
-    if(usuario === undefined){
+    if(usuario.email === undefined){
       alert("Inicie sesión para poder subir un vídeo")
        navigate("/");
    }
@@ -39,11 +40,11 @@ function getTips () {
  
   ejercicio.tips.forEach(function(currentValue, index) {
     if(currentValue==="PESODISTRIBUIDOENTODOELPIE"){
-     tipText+="Distribuya el peso en todo el pie. "
+     tipText+="Distribuya el peso en todo el pie, no únicamente en las puntillas o los talones.  "
     }
 
-    if(currentValue==="ANCHURAPIESCADERA"){
-      tipText += "Anchura de los pies a la altura de las caderas. "
+    if(currentValue==="EXTENSIONRODILLAS"){
+      tipText += "Extienda completamente las rodillas al finalizar el movimiento. "
     }
     if(currentValue==="ANCHURAPIESHOMBROS"){
       tipText+="Anchura de los pies a la altura de los hombros. "
@@ -54,8 +55,8 @@ function getTips () {
     if(currentValue==="ANCHURACERRADOAGARREBARRA"){
       tipText+="Anchura del agarre de la barra cerrado. ";
     }
-    if(currentValue==="EXTENSIONCOMPLETACADERAYRODILLAS"){
-      tipText+="Recuerde realizar la extensión completa de caderas y rodillas al finalizar el movimiento. "
+    if(currentValue==="EXTENSIONCADERA"){
+      tipText+="Extienda completamente la cadera al finalizar el movimiento. "
     }
     if(currentValue==="EXTENSIONCOMPLETACODOS"){
       tipText+="Recuerde realizar la extensión completa de codos al finalizar el movimiento. "
@@ -66,8 +67,11 @@ function getTips () {
     if(currentValue==="RODILLASSIGUENLINEAPIES"){
       tipText+="Manten las rodillas en línea con los pies. "
     }
-    if(currentValue==="MANTENERESPALDARECTA"){
-      tipText+="Manten la espalda recta. "
+    if(currentValue==="MANTENERESPALDARECTADESDESUELO"){
+      tipText+="Manten la espalda recta. Piense en sacar pecho. "
+    }
+    if(currentValue==="MANTENERESPALDARECTADESDENOSUELO"){
+      tipText+="Manten la espalda recta. Piense en sacar pecho. "
     }
     if(currentValue==="BARRAAPOYADAHOMBROS"){
       tipText+="En posición de inicio la barra debe estar apoyada en los hombros. "
@@ -80,6 +84,9 @@ function getTips () {
     }
     if(currentValue==="ROMPERELPARALELOS"){
       tipText+="Baje profundamente. Sobrepase los 90 grados. "
+    }
+    if(currentValue==="SACARCABEZA"){
+      tipText+="Saque la cabeza al finalizar el movimiento, es decir los hombros deben quedar por detrás de la oreja. "
     }
   
 
@@ -131,6 +138,7 @@ const {
       axios.post("https://localhost:8002/informes/crear",
           {
               "idUsuario" : values.user._id.$oid, 
+              "emailUsuario" : values.user.email,
               "videoPerfil": values.videoPerfil,
               "videoFrontal": values.videoFrontal,
               "idEjercicio": values.ej._id.$oid,        
@@ -247,15 +255,15 @@ const {
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-                     <Cloudinary func={addVideoPerfil} nombre={usuario.email + Math.random() + "perfil"}></Cloudinary>
-                     <Cloudinary func={addVideoFrontal} nombre={usuario.email + Math.random() + "frontal"} ></Cloudinary>
-                    </Typography>
+                     <Cloudinary  cloudName= "drcsegsao" uploadPreset= "trabajofingrado" func={addVideoPerfil} nombre={usuario.email + Math.random() + "perfil"}> </Cloudinary>
+                  </Typography>
                     </Box>
                 </Grid>
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-                  
+                    <Cloudinary cloudName= "drcsegsao" uploadPreset= "trabajofingrado" func={addVideoFrontal} nombre={usuario.email + Math.random() + "frontal"} ></Cloudinary>
+
                     </Typography>
                     </Box>
                 </Grid>

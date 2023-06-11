@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import TarjetaEjercicio from '../TarjetaEjercicio/TarjetaEjercicio';
 
-const ListaEjercicios = ({locations }) => {
+const ListaEjercicios = ({locations,admin }) => {
    
 
   if (locations.length == 0){
@@ -17,8 +17,8 @@ const ListaEjercicios = ({locations }) => {
       <Grid container rowSpacing={3} columnSpacing={3}>
       {locations.map((ejercicio) => {
           return (
-            <Grid key={ejercicio.nombre} item xs={12} sm={4} md={4} lg={3}>
-              <TarjetaEjercicio ejercicio={ejercicio}  />
+            <Grid key={ejercicio.nombre} item xs={4}>
+              <TarjetaEjercicio admin={admin} ejercicio={ejercicio}  />
             </Grid>
           );
         })}

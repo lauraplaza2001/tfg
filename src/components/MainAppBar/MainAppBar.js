@@ -18,52 +18,41 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import MenuItem from '@mui/material/MenuItem';
 import Link from '@mui/material/Link';
 
-
-
-
 const MainAppBar = ({ login }) => {
-    const navigate = useNavigate();
-    const [anchorElNav, setAnchorElNav] = useState(null);
-    const [log, setLog] = useState(false);
-    const [photo, setPhoto] = useState("");
-    const [user,setUser] = useState(""); 
-  
-    const handleOpenNavMenu = (event) => {
-      setAnchorElNav(event.currentTarget);
-    };
-  
-    const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
-    };
-  
-    const logIn = (token) => {
-      axios.get("http://localhost:8000/usuarios/logIn/" + token.credential).then((response) => {
-        
-        setPhoto(response.data.foto);
-        login(response.data.usuario);
-        setLog(true);
-        console.log(response.data.usuario);
-        setUser(response.data.usuario);
-    
+  const navigate = useNavigate();
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [log, setLog] = useState(false);
+  const [photo, setPhoto] = useState("");
+  const [user, setUser] = useState("");
 
-        
-      });
-    };
-  
-    const logOut = () => {
-      setPhoto("");
-      login();
-      setLog(false);
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
 
-    }
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-    const LogButton = () => {
-      if (log) {
-        return (
-          <Button
-          variant="contained"
-          sx={Styler.logoutbutton}
-        >
+  const logIn = (token) => {
+    axios.get("http://localhost:8000/usuarios/logIn/" + token.credential).then((response) => {
+      setPhoto(response.data.foto);
+      login(response.data.usuario);
+      setLog(true);
+      console.log(response.data.usuario);
+      setUser(response.data.usuario);
+    });
+  };
+
+  const logOut = () => {
+    setPhoto("");
+    login();
+    setLog(false);
+  };
+
+  const LogButton = () => {
+    if (log) {
+      return (
+        <Button variant="contained" sx={Styler.logoutbutton}>
           <Image
             src={photo}
             height="50px"
@@ -71,51 +60,46 @@ const MainAppBar = ({ login }) => {
             onClick={() => {
               logOut();
               console.log('Logout correcto');
-            }} />
+            }}
+          />
         </Button>
-        );
-      } else {
-        return (<GoogleLogin
-          onSuccess={credentialResponse => {
+      );
+    } else {
+      return (
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
             logIn(credentialResponse);
             console.log('Login correcto');
-          
-          
           }}
           onError={() => {
             console.log('Login Failed');
           }}
-        />);
-      }
+        />
+      );
     }
+  };
 
-
-
-
-    
   return (
     <AppBar position="static" sx={{ backgroundColor: "#B84E4E" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <FitnessCenterIcon  onClick={() => navigate("/")} sx={{ display: {color: 'black', xs: 'none', md: 'flex'}, mr: 1 }} />
-        <Typography
-              variant="h5"
-              noWrap
-              component="a"
-
-              onClick={() => navigate("/")}
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily:   '"Segoe UI Symbol"',
-                fontWeight: 'bold',
-                color: 'black',
-                align: 'right'
-              }}
-            >
-           Functional Training Assitance
-            </Typography>
-    
+          <FitnessCenterIcon onClick={() => navigate("/")} sx={{ display: { color: 'black', xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            onClick={() => navigate("/")}
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: '"Segoe UI Symbol"',
+              fontWeight: 'bold',
+              color: 'black',
+              align: 'right'
+            }}
+          >
+            Functional Training Assistance
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -149,7 +133,7 @@ const MainAppBar = ({ login }) => {
               <MenuItem key="Ejercicios" onClick={handleCloseNavMenu}>
                 <Link
                   sx={{
-                    textAling: "center",
+                    textAlign: "center",
                     color: "black",
                   }}
                   onClick={() => navigate("/Ejercicios")}
@@ -158,18 +142,38 @@ const MainAppBar = ({ login }) => {
                   Ejercicios
                 </Link>
               </MenuItem>
-              <MenuItem key="Admin" onClick={handleCloseNavMenu}>
-                <Link
-                  sx={{
-                    textAling: "center",
-                    color: "black",
-                  }}
-                  onClick={() => navigate("/")}
-                  underline="none"
-                >
-                 Admin
-                </Link>
-              </MenuItem>
+
+              {user && user.rol === 'ADMIN' && (
+                <>
+                  <MenuItem key="AdminEjercicios" onClick={handleCloseNavMenu}>
+                    <Link
+                      sx={{
+                        textAlign: 'center',
+                        color: 'black',
+                      }}
+                      onClick={() => navigate('/AdminEjercicios')}
+                      underline="none"
+                    >
+                      Ejercicios Admin
+                    </Link>
+                  </MenuItem>
+                  <MenuItem key="AdminUsuarios" onClick={handleCloseNavMenu}>
+                    <Link
+                      sx={{
+                        textAlign: 'center',
+                        color: 'black',
+                      }}
+                      onClick={() => navigate('/AdminUsuarios')}
+                      underline="none"
+                    >
+                      Usuarios
+                    </Link>
+                  </MenuItem>
+                </>
+              )}
+
+              {/* ...otros elementos del menú... */}
+
             </Menu>
           </Box>
           <Typography
@@ -188,7 +192,7 @@ const MainAppBar = ({ login }) => {
               textDecoration: 'none',
             }}
           >
-           Functional Training Assitance
+            Functional Training Assistance
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button
@@ -198,27 +202,34 @@ const MainAppBar = ({ login }) => {
             >
               Ejercicios
             </Button>
-            <Button
-              key="Admin"
-              onClick={() => navigate("/Admin")}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-             Admin
-            </Button>
+
+            {user && user.rol === 'ADMIN' && (
+              <>
+                <Button
+                  key="AdminEjercicios"
+                  onClick={() => navigate('/AdminEjercicios')}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Ejercicios Admin
+                </Button>
+                <Button
+                  key="AdminUsuarios"
+                  onClick={() => navigate('/AdminUsuarios')}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Usuarios
+                </Button>
+              </>
+            )}
+
+  
+
           </Box>
           <LogButton />
         </Toolbar>
       </Container>
     </AppBar>
   );
+};
 
-
-
-
-
-
-  }
-  export default MainAppBar;
-
-
-
+export default MainAppBar;

@@ -276,7 +276,7 @@ const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
               </Box>
             </Grid>
 
-            <ListaEjercicios locations={ejercicios}></ListaEjercicios>
+            <ListaEjercicios admin={false}locations={ejercicios}></ListaEjercicios>
 
 
           </Grid>

@@ -97,17 +97,18 @@ const InfoEjercicio = ({usuario }) => {
               if(currentValue==="ANCHURAPIESCADERA"){
                 tipText += "Anchura de los pies a la altura de las caderas. "
               }
-              if(currentValue==="ANCHURAPIESHOMBROS"){
-                tipText+="Anchura de los pies a la altura de los hombros. "
-              }
+        
               if(currentValue==="ANCHURAABIERTOAGARREBARRA"){
                 tipText+="Anchura del agarre de la barra abierto. "
               }
               if(currentValue==="ANCHURACERRADOAGARREBARRA"){
                 tipText+="Anchura del agarre de la barra cerrado. ";
               }
-              if(currentValue==="EXTENSIONCOMPLETACADERAYRODILLAS"){
-                tipText+="Recuerde realizar la extensión completa de caderas y rodillas al finalizar el movimiento. "
+              if(currentValue==="EXTENSIONCADERA"){
+                tipText+="Recuerde realizar la extensión completa de caderas al finalizar el movimiento, es decir, tus hombros deben acabar en línea con tu cuerpo "
+              }
+              if(currentValue==="EXTENSIONRODILLAS"){
+                tipText+="Recuerde realizar la extensión completa de rodillas finalizar el movimiento. "
               }
               if(currentValue==="EXTENSIONCOMPLETACODOS"){
                 tipText+="Recuerde realizar la extensión completa de codos al finalizar el movimiento. "
@@ -118,8 +119,11 @@ const InfoEjercicio = ({usuario }) => {
               if(currentValue==="RODILLASSIGUENLINEAPIES"){
                 tipText+="Manten las rodillas en línea con los pies. "
               }
-              if(currentValue==="MANTENERESPALDARECTA"){
-                tipText+="Manten la espalda recta. "
+              if(currentValue==="MANTENERESPALDARECTADESDESUELO"){
+                tipText+="Manten la espalda recta.  "
+              }
+              if(currentValue==="MANTENERESPALDARECTADESDENOSUELO"){
+                tipText+="Manten la espalda recta."
               }
               if(currentValue==="BARRAAPOYADAHOMBROS"){
                 tipText+="En posición de inicio la barra debe estar apoyada en los hombros. "
@@ -133,11 +137,13 @@ const InfoEjercicio = ({usuario }) => {
               if(currentValue==="ROMPERELPARALELOS"){
                 tipText+="Baje profundamente. Sobrepase los 90 grados. "
               }
+              if(currentValue==="SACARCABEZA"){
+                tipText+="Acaba sacando la cabeza, es decir , tus hombros deben quedar por detrás de las orejas "
+              }
+
             
           
             })
-          
-          
             setTexto(tipText);
           }
 
