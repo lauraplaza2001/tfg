@@ -9,9 +9,11 @@ import * as Yup from 'yup';
 
 import { Styler } from '../../components/Styler/Styler';
 
-const ModificarUsuario = ({ roles }) => {
+const ModificarUsuario = ({ roles, user }) => {
   const navigate = useNavigate();
   const usuario = useLocation().state.usuario;
+
+
 
   const defaultValues = {
     nombre: usuario.nombre,
@@ -23,6 +25,11 @@ const ModificarUsuario = ({ roles }) => {
 
   useEffect(() => {
    console.log(values)
+   if(user==undefined){
+    console.log(user)
+    alert("Por favor, inicie sesión")
+    navigate("/")
+  }
   
    
      });

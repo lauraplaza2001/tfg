@@ -1,26 +1,16 @@
-import { useLocation} from "react-router-dom";
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import CircularProgress from '@mui/material/CircularProgress';
+import { Button, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
-import { Container } from "@mui/system";
-import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
-import { Button, Typography } from '@mui/material';
-import { TextField } from "@mui/material";
-import { Styler } from '../../components/Styler/Styler'
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Chip from '@mui/material/Chip';
+import { Container } from "@mui/system";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ListaEjercicios from "../../components/ListaEjercicios/ListaEjercicios";
 
 
 
-const AdminEjercicios = () => {
+const AdminEjercicios = ({user}) => {
 
     const [ejercicios,setEjercicios] = useState([]);
     const [cargando, setCargando] = useState(true);
@@ -30,24 +20,9 @@ const AdminEjercicios = () => {
 
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
-    const theme = useTheme();
-    const MenuProps = {
-    PaperProps: {
-        style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-        },
-    },
-    };
 
-    function getStyles(name, personName, theme) {
-    return {
-        fontWeight:
-        personName.indexOf(name) === -1
-            ? theme.typography.fontWeightRegular
-            : theme.typography.fontWeightMedium,
-    };
-    }
+
+
 
 
     const getEjercicios = async () => {

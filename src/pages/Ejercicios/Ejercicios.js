@@ -1,21 +1,17 @@
-import { useLocation} from "react-router-dom";
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import CircularProgress from '@mui/material/CircularProgress';
+import { Button, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
-import { Container } from "@mui/system";
-import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
-import { Button, Typography } from '@mui/material';
-import { TextField } from "@mui/material";
-import { Styler } from '../../components/Styler/Styler'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-
+import { Container } from "@mui/system";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Chip from '@mui/material/Chip';
 import ListaEjercicios from "../../components/ListaEjercicios/ListaEjercicios";
 
@@ -32,7 +28,7 @@ const Ejercicios = ({usuario}) => {
 
 
 {/* ETSTO ES PARA LA SELECCION DE MUICHOS GRUPOS MUSCULARES */ }
-const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
+const gmus = ["PIERNAS", "BRAZOS", "ESPALDA", "HOMBROS" , "PECHO", "ABDOMEN"]
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
     const theme = useTheme();
@@ -95,7 +91,9 @@ const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
       if (gruposMusculares.length === 0) {
         getEjercicios();
       } else {
-        const ej = await axios.get(`http://localhost:8001/ejercicios/filter/gruposMusculares? =${gruposMusculares}`);
+        console.log(gruposMusculares)
+        console.log(gruposMusculares.join(","))
+        const ej = await axios.get("http://localhost:8001/ejercicios/filter/gruposMusculares/" + gruposMusculares.join(","));
         setEjercicios(ej.data);
         setCargando(false);
       }
@@ -276,7 +274,7 @@ const gmus = ["Piernas", "Brazos", "Espalda", "Hombros" , "Pecho", "Abdomen"]
               </Box>
             </Grid>
 
-            <ListaEjercicios admin={false}locations={ejercicios}></ListaEjercicios>
+            <ListaEjercicios admin={false} locations={ejercicios}></ListaEjercicios>
 
 
           </Grid>

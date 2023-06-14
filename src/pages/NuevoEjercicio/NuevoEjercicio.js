@@ -1,36 +1,37 @@
-import { useLocation} from "react-router-dom";
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import CircularProgress from '@mui/material/CircularProgress';
+import { Button, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import { Container } from "@mui/system";
-import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import { Button, Typography } from '@mui/material';
-import { TextField } from "@mui/material";
-import { Styler } from '../../components/Styler/Styler'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Styler } from '../../components/Styler/Styler';
+import Alert from '@mui/material/Alert';
 import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Alert from '@mui/material/Alert';
-
-import Chip from '@mui/material/Chip';
-import ListaEjercicios from "../../components/ListaEjercicios/ListaEjercicios";
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
+import { useForm } from 'react-hook-form';
+import * as Yup from 'yup';
 
 
 
-const NuevoEjercicio = ({tips,dificultades,gruposMusculares}) => {
+const NuevoEjercicio = ({user,tips,dificultades,gruposMusculares}) => {
     const navigate = useNavigate();
+    useEffect(() => {
+      
+        if(user==undefined){
+         console.log(user)
+         alert("Por favor, inicie sesión")
+         navigate("/")
+       }
+       
+        
+          });
+
 
 
     const defaultValues= {

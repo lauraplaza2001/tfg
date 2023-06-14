@@ -8,8 +8,6 @@ import foto from "../../images/portada.jpg";
 import { useNavigate } from 'react-router-dom';
 
 
-
-
 const Main = ({usuario}) => {
     const navigate = useNavigate();
 

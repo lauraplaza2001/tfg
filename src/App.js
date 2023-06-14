@@ -44,11 +44,11 @@ function App() {
           <Route path="SubirVideo" element={<SubirVideo usuario={user}/>} /> 
           <Route path="AdminEjercicios" element={<AdminEjercicios usuario={user}/>}/>
           <Route path="AdminUsuarios" element={<AdminUsuarios usuario={user}/>}/>
-          <Route path="NuevoEjercicio" element={<NuevoEjercicio gruposMusculares={gruposMusculares} dificultades={dificultades} tips={tips}/>}/>
-          <Route path="ModificarEjercicio" element={<ModificarEjercicio gruposMusculares={gruposMusculares} dificultades={dificultades} tips={tips}/>}/>
-          <Route path="AdminUsuarios" element={<AdminUsuarios/>} />
-          <Route path="ModificarUsuario/:id" element={<ModificarUsuario roles={roles}/>} />
-          <Route path="NuevoUsuario" element={<NuevoUsuario roles={roles}/>} />
+          <Route path="NuevoEjercicio" element={<NuevoEjercicio user={user} gruposMusculares={gruposMusculares} dificultades={dificultades} tips={tips}/>}/>
+          <Route path="ModificarEjercicio" element={<ModificarEjercicio user={user} gruposMusculares={gruposMusculares} dificultades={dificultades} tips={tips}/>}/>
+          <Route path="AdminUsuarios" element={<AdminUsuarios user={user} />} />
+          <Route path="ModificarUsuario/:id" element={<ModificarUsuario user={user} roles={roles}/>} />
+          <Route path="NuevoUsuario" element={<NuevoUsuario user={user} roles={roles}/>} />
         </Routes>
       </BrowserRouter>
  

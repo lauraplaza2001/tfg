@@ -15,7 +15,7 @@ const TarjetaEjercicio = ({ ejercicio,admin}) => {
 
     
   return ( 
-    <Card sx={{ mt:4 ,height: '280px' ,width: '300px' ,  border: '4px solid black' ,  padding:"5px" ,  borderRadius: 6, display: show}}>
+    <Card sx={{ mt:4 ,mr: 2, height: '280px' ,width: '300px' ,  border: '4px solid black' ,  padding:"5px" ,  borderRadius: 6, display: show}}>
       <CardMedia
         component="img"
         height="140"
@@ -37,7 +37,7 @@ const TarjetaEjercicio = ({ ejercicio,admin}) => {
        
       </CardContent>
 
-      <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
+      <CardActions style={{justifyContent: 'center' }}>
         <Typography backgroundColor="#E9E2E2" variant="h4" style={{ fontWeight: 'bold', fontFamily: 'Segoe UI Symbol', textTransform: 'uppercase', textDecoration: 'underline' }}  onClick={() => {
 
                                                                                                                                                                                     if(admin== false){

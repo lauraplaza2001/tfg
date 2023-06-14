@@ -1,17 +1,12 @@
-import { useLocation} from "react-router-dom";
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import { Container } from "@mui/system";
-import { useNavigate } from 'react-router-dom';
-import Grid from '@mui/material/Grid';
 import { Button, Typography } from '@mui/material';
-import { TextField } from "@mui/material";
-
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
+import Grid from '@mui/material/Grid';
+import { Container } from "@mui/system";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
+import { Styler } from '../../components/Styler/Styler';
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
-import { Styler } from '../../components/Styler/Styler'
-
 
 
 const InfoEjercicio = ({usuario }) => {
@@ -185,13 +180,13 @@ const InfoEjercicio = ({usuario }) => {
                         style={ Styler.textosombra }
                         sx={{ mb: 2 }}
                         >
-                            DEADLIFT
+                            {ejercicio.nombre.toUpperCase()}
                     </Typography>
                 </Grid>
 
                 <Grid item xs={7} md={7}>
                     <Box sx={item}>
-                        <VideoPlayer videoUrl={"https://www.youtube.com/watch?v=1ZXobu7JvvE&t=6s"}></VideoPlayer>
+                        <VideoPlayer videoUrl={ejercicio.video}></VideoPlayer>
 
                     </Box>
                 </Grid>
