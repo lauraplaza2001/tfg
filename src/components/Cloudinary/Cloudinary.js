@@ -17,30 +17,23 @@ class Cloudinary extends Component {
   componentDidMount() {
     const { cloudName, uploadPreset, nombre, func } = this.props;
 
-    var myWidget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: cloudName,
-        uploadPreset: uploadPreset,
-        sources: ["local"],
-        resourceType: "video",
-        folder: "TFG",
-        public_id: nombre,
-      },
-      (error, result) => {
-        if (!error && result && result.event === "success") {
-          func(result.info.secure_url);
-          this.setState({ successMessageOpen: true });
-        }
+    this.myWidget = window.cloudinary.createUploadWidget({
+      cloudName: cloudName,
+      uploadPreset: uploadPreset,
+      sources: ["local"],
+      resourceType: "video",
+      folder: "TFG",
+      public_id: nombre,
+    }, (error, result) => {
+      if (!error && result && result.event === "success") {
+        func(result.info.secure_url);
+        this.setState({ successMessageOpen: true });
       }
-    );
+    });
+  }
 
-    document.getElementById(`upload_widget_${nombre}`).addEventListener(
-      "click",
-      function () {
-        myWidget.open();
-      },
-      false
-    );
+  componentWillUnmount() {
+    this.myWidget.destroy(); // Destruye el widget al desmontar el componente
   }
 
   render() {
@@ -62,6 +55,7 @@ class Cloudinary extends Component {
             height: "60px",
             width: "164px",
           }}
+          onClick={() => this.myWidget.open()} // Abre el widget al hacer clic en el botón
         >
           Subir Video
         </Button>

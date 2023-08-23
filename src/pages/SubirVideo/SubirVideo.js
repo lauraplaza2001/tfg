@@ -14,13 +14,11 @@ const SubirVideo = () => {
   const navigate = useNavigate(); 
   const usuario = useLocation().state.usuario;
   const ejercicio= useLocation().state.ejercicio;
-  //const texto = useState("")
   const [texto, setTexto] = useState("");
 
 
 
   useEffect(() => {
-  
    // console.log( usuario.nombre)
     console.log(ejercicio)
     if(usuario.email === undefined){
@@ -118,21 +116,31 @@ const {
     videoFrontal: "",
     informe: []
   }
+
+
+
   const [values, setValues] = useState(defaultValues);
+  const nombrePerfil = usuario.email + Math.random() + "perfil";
+  const nombreFrontal = usuario.email + Math.random() + "frontal";
 
   const addVideoPerfil = (url) => {
-    setValues({ ...values, videoPerfil: url });
-    console.log(values.videoPerfil)
+    setValues((prevValues) => ({ ...prevValues, videoPerfil: url }));
+    console.log(url);
   };
-  const addVideoFrontal = (url) => {
-    setValues({ ...values, videoFrontal: url });
-    console.log(values.videoFrontal)
-  }
 
+  const addVideoFrontal = (url) => {
+    setValues((prevValues) => ({ ...prevValues, videoFrontal: url }));
+    console.log(url);
+  };
  
 
 
   const generarInforme = (data) => {
+    console.log("videoPerfil:")
+    console.log(values.videoPerfil)
+    console.log("videoFrontal")
+    console.log(values.videoFrontal)
+    console.log(values)
     if(values.videoFrontal !== "" && values.videoPerfil !== ""){
     //if(values.videoFrontal.length >= 1 && values.videoPerfil.length >= 1){
       axios.post("https://localhost:8002/informes/crear",
@@ -200,7 +208,7 @@ const {
                         - El movimiento a realizar es el <b>{ejercicio.nombre} </b> 
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"  align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - Deberás grabarte dos vídeos : uno de <b>perfil </b> y otro de <b>frente a la cámara </b>
+                        - Deberás grabarte dos vídeos : uno de <b>perfil </b> y otro de <b>frente a la cámara. Ambos con la cámara frontal de tu móvil</b>
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"  align='center'  variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
                         -Situese a <b>3</b> metros de distancia de la cámara. Sólo debe aparecer una persona  en el vídeo
@@ -255,15 +263,14 @@ const {
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-                     <Cloudinary  cloudName= "drcsegsao" uploadPreset= "trabajofingrado" func={addVideoPerfil} nombre={usuario.email + Math.random() + "perfil"}> </Cloudinary>
+                    <Cloudinary cloudName="drcsegsao" uploadPreset="trabajofingrado" func={addVideoPerfil} nombre={nombrePerfil} />
                   </Typography>
                     </Box>
                 </Grid>
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-                    <Cloudinary cloudName= "drcsegsao" uploadPreset= "trabajofingrado" func={addVideoFrontal} nombre={usuario.email + Math.random() + "frontal"} ></Cloudinary>
-
+                    <Cloudinary cloudName="drcsegsao" uploadPreset="trabajofingrado" func={addVideoFrontal} nombre={nombreFrontal} />
                     </Typography>
                     </Box>
                 </Grid>

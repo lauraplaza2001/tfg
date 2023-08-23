@@ -77,9 +77,7 @@ const NuevoUsuario = ({roles, user}) => {
                         "rol" : values.rol,
 
                     }).then(() => {
-                        <Alert variant="filled" severity="success">
-                        Usuario creado con éxito
-                        </Alert>
+                        alert("Usuario creado con éxito")
                         navigate("/AdminUsuarios")
                     }).catch((response) =>{
                         console.log(response);

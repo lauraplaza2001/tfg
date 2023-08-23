@@ -49,6 +49,7 @@ const ModificarUsuario = ({ roles, user }) => {
   const eliminarUsuario = () => {
     axios.delete(`http://localhost:8000/usuarios/eliminar/${usuario._id.$oid}`)
       .then(() => {
+        alert("Usuario eliminado correctamente")
         navigate("/AdminUsuarios");
       })
       .catch((error) => {
@@ -65,6 +66,7 @@ const ModificarUsuario = ({ roles, user }) => {
       "rol": values.rol,
     })
       .then(() => {
+        alert("Usuario modificado correctamente")
         navigate("/AdminUsuarios");
       })
       .catch((error) => {
@@ -98,7 +100,7 @@ const ModificarUsuario = ({ roles, user }) => {
             fontSize: "20px",
             height: "60px",
             width: "150px",
-            ml: 2
+            ml: 7
           }}
           onClick={() => navigate("/AdminUsuarios")}
         >
@@ -106,10 +108,10 @@ const ModificarUsuario = ({ roles, user }) => {
         </Button>
       </Grid>
 
-      <Grid item container md={5} xs={5} sx={{ marginTop: '40px' }}>
+      <Grid item container md={3} xs={3} sx={{ marginTop: '40px' }}>
       </Grid>
 
-      <Grid item container md={2} xs={2} sx={{ marginTop: '40px', marginLeft: '20px' }}>
+      <Grid item container md={4} xs={4} sx={{ marginTop: '40px', marginLeft: '90px' }}>
         <Button
           color="error"
           variant="outlined"
@@ -119,7 +121,7 @@ const ModificarUsuario = ({ roles, user }) => {
             fontSize: "20px",
             height: "60px",
             width: "150px",
-            ml: 2
+            ml : 22
           }}
           onClick={() => eliminarUsuario()}
         >
@@ -127,7 +129,7 @@ const ModificarUsuario = ({ roles, user }) => {
         </Button>
       </Grid>
 
-      <Grid item container md={12} xs={12} sx={{ margin: '40px' }} alignItems="center" justifyContent="center">
+      <Grid item container md={9} xs={9} sx={{ margin: '40px' , marginLeft:'160px'}} alignItems="center" justifyContent="center">
         <form onSubmit={handleSubmit(editarUsuario)} onKeyPress={(e) => { e.which === 13 && e.preventDefault() }} noValidate>
           <Grid container spacing={3} sx={{ paddingRight: '10px', paddingBottom: '10px', border: 2, borderRadius: 5, borderColor: "#FFFFF" }}>
        
@@ -157,9 +159,10 @@ const ModificarUsuario = ({ roles, user }) => {
               </Typography>
             </Grid>
             <Grid item md={5}></Grid>
-            <Grid item md={6} alignItems="right" >
+            <Grid item md={6} alignItems="left" sx={{ml:4}}  >
               <InputLabel id="demo-select-small"> ROL*</InputLabel>
               <Select
+           
                 labelId="demo-select-small"
                 id="demo-select-small"
                 defaultValue={usuario.rol}
@@ -177,7 +180,7 @@ const ModificarUsuario = ({ roles, user }) => {
               </Select>
             </Grid>
 
-            <Grid item md={12}>
+            <Grid item md={12}  xs={12} alignItems="left"   marginLeft={65}  >
               <Button
                 type="submit"
                 color="error"
@@ -188,7 +191,7 @@ const ModificarUsuario = ({ roles, user }) => {
                   fontSize: "20px",
                   height: "60px",
                   width: "150px",
-                  marginLeft: 60,
+              
                   marginTop: 3,
                 }}
               >

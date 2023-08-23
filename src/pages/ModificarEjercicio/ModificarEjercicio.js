@@ -55,11 +55,11 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
 
 
     const eliminarEjercicio = (data) => {
-            axios.delete("http://localhost:8001/ejercicios/eliminar/" + ejercicio.nombre + "/" + ejercicio.descripcion,
+        console.log(ejercicio.nombre)
+        console.log(ejercicio.descripcion)
+            axios.delete("http://localhost:8001/ejercicios/eliminar/" + ejercicio.descripcion + "/" + ejercicio.nombre ,
               ).then(() => {
-                    <Alert variant="filled" severity="success">
-                    Ejercicio eliminado con éxito
-                    </Alert>
+                    alert("Ejercicio eliminado con éxito")
                     navigate("/AdminEjercicios")
                 }).catch((response) =>{
                     console.log(response);
@@ -90,10 +90,9 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
                     "tips" : values.tips,
                     "gruposMusculares" : values.gruposMusculares,
                 }).then(() => {
-                    <Alert variant="filled" severity="success">
-                    Ejercicio modificado con éxito
-                    </Alert>
+                    alert("Ejercicio modificado correctamente")
                     navigate("/AdminEjercicios")
+                    
                 }).catch((response) =>{
                     console.log(response);
                     alert("Error, rellene todos los campos correctamente")
@@ -139,7 +138,7 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
 
 
     return (
-        <Grid container spacing={2} sx={{paddingTop: '10px'}}>
+        <Grid container spacing={2} sx={{paddingTop: '10px' }}>
              <Grid item container md={3} xs={3} sx={{margin: '40px', marginLeft:'80px'}}  >
              <Button
                         color="error"
@@ -148,7 +147,7 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
                         fontSize: "20px",
                         height: "60px",
                         width: "150px",
-                        ml: 2 }}
+                        ml: 8 }}
                         onClick={() => navigate("/AdminEjercicios")}
                     >
                      Volver
@@ -157,19 +156,19 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
 
              </Grid>
 
-             <Grid item container md={5} xs={5} sx={{marginTop: '40px'}}  >
+             <Grid item container md={4} xs={4} sx={{marginTop: '40px', ml:5}}  >
              <Typography 
                 color="black" 
-                align="left"
+                align="center"
                 variant="h2"
                 marked="center" 
                 style={ Styler.textosombra }
-                sx={{ mb: 2 }}
+                sx={{ mb: 2 ,ml:8, mr:8}}
                 >
              {ejercicio.nombre}
             </Typography>
              </Grid>   
-             <Grid item container md={2} xs={2} sx={{marginTop: '40px', marginLeft:'20px'}}  >
+             <Grid item container md={3} xs={3} sx={{marginTop: '40px', marginLeft:'20px'}}  >
              <Button
                         color="error"
                         variant="outlined"    sx={{backgroundColor:  "black",
@@ -177,7 +176,7 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
                         fontSize: "20px",
                         height: "60px",
                         width: "150px",
-                        ml: 2 }}
+                        ml: 15 }}
                         onClick={() => eliminarEjercicio()}
                     >
                      Eliminar
@@ -188,7 +187,7 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
 
 
 
-            <Grid item container md={12} xs={12} sx={{margin: '40px'}} alignItems="center"  justifyContent="center" >
+            <Grid item container md={10} xs={10} sx={{margin: '40px', ml: 20, mr: 20}} alignItems="center"  justifyContent="center" >
                
                 <form onSubmit={handleSubmit(editarEjercicio)} onKeyPress={e => { e.which === 13 && e.preventDefault() }} noValidate>
                     <Grid container spacing={3} sx={{  paddingRight: '10px', paddingBottom: '10px', border: 2, borderRadius: 5, borderColor: "forFFFFF"}}>
@@ -214,10 +213,10 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
                         </Select>
                          </Grid>
                        
-                        <Grid item md={12}><TextField defaultValue={ejercicio.descripcion} fullWidth multiline rows={3} maxrows={5} label="Descripción" {...register('descripcion')} error={errors.descripcion ? true : false} helpertext={errors.descripcion?.message} name='descripcion' required  onChange={(event) =>setValues({ ...values, descripcion: event.target.value })}/></Grid>
-                        <Grid item md={6}><TextField defaultValue={ejercicio.video}  fullWidth label="Enlace Vídeo" {...register('video')} error={errors.video ? true : false} helpertext={errors.video?.message}  name='video' required onChange={(event) =>setValues({ ...values, video: event.target.value })}/></Grid>
-                        <Grid item md={6}><TextField defaultValue={ejercicio.foto}  fullWidth label="Enlace Foto" {...register('foto')} error={errors.foto ? true : false} helpertext={errors.foto?.message}  name='foto' required  onChange={(event) =>setValues({ ...values, foto: event.target.value })}/></Grid>
-                        <Grid item md={12}>
+                        <Grid item md={10}><TextField defaultValue={ejercicio.descripcion} fullWidth multiline rows={3} maxrows={5} label="Descripción" {...register('descripcion')} error={errors.descripcion ? true : false} helpertext={errors.descripcion?.message} name='descripcion' required  onChange={(event) =>setValues({ ...values, descripcion: event.target.value })}/></Grid>
+                        <Grid item md={5}><TextField defaultValue={ejercicio.video}  fullWidth label="Enlace Vídeo" {...register('video')} error={errors.video ? true : false} helpertext={errors.video?.message}  name='video' required onChange={(event) =>setValues({ ...values, video: event.target.value })}/></Grid>
+                        <Grid item md={5}><TextField defaultValue={ejercicio.foto}  fullWidth label="Enlace Foto" {...register('foto')} error={errors.foto ? true : false} helpertext={errors.foto?.message}  name='foto' required  onChange={(event) =>setValues({ ...values, foto: event.target.value })}/></Grid>
+                        <Grid item md={10}>
                         <b>GRUPOS MUSCULARES*</b>
                         <FormGroup row>
                         {gruposMusculares.map((e) => (
@@ -307,6 +306,7 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
                             height: "60px",
                             width: "150px",
                             marginLeft: 60,
+                            marginRight: 60,
                             marginTop: 3,
                         }}
                         onClick={() => editarEjercicio()} // Agrega el evento de clic aquí

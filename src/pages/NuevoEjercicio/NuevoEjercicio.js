@@ -23,7 +23,7 @@ const NuevoEjercicio = ({user,tips,dificultades,gruposMusculares}) => {
     const navigate = useNavigate();
     useEffect(() => {
       
-        if(user==undefined){
+        if(user===undefined){
          console.log(user)
          alert("Por favor, inicie sesión")
          navigate("/")
@@ -265,18 +265,23 @@ const NuevoEjercicio = ({user,tips,dificultades,gruposMusculares}) => {
                             ))}
                         </FormGroup>
                         </Grid>
-
+                        <Grid item md={12}>
+                            <Button type="submit"  color="error"
+                                variant="outlined"    sx={{backgroundColor:  "black",
+                                fontFamily:   '"Segoe UI Symbol"',
+                                fontSize: "20px",
+                                height: "60px",
+                                width: "150px",
+                                marginLeft: 60,
+                                marginRight: 60,
+                                marginTop: 3,
+                                }} >Crear</Button>
+                        </Grid>
 
 
                        
                        </Grid>
-                    <Button type="submit"  color="error"
-                        variant="outlined"    sx={{backgroundColor:  "black",
-                        fontFamily:   '"Segoe UI Symbol"',
-                        fontSize: "20px",
-                        height: "60px",
-                        width: "150px",
-                        ml: 2, mt:3 }} >Crear</Button>
+                
                 </form>
                 </Box>
             </Grid>

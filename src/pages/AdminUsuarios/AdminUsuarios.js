@@ -52,14 +52,7 @@ const AdminUsuarios = ({tips,dificultades,gruposMusculares, user}) => {
     
 
   useEffect(() => {
-
     getUsuarios()
-    if(user==undefined){
-      alert("Por favor, inicie sesión")
-      navigate("/")
-    }
-
-   
      }, [cargando]);
 
      const handleChangeNombre = (event) => {
