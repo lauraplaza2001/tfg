@@ -7,6 +7,9 @@ import axios from 'axios';
 import {useForm} from 'react-hook-form';
 import { useLocation } from "react-router-dom";
 import { Box, Container, Button, Typography, Grid } from '@mui/material';
+import {ColorRing} from 'react-loader-spinner' ;
+import {  BeatLoader } from "react-spinners";
+
 
 
 
@@ -15,6 +18,7 @@ const SubirVideo = () => {
   const usuario = useLocation().state.usuario;
   const ejercicio= useLocation().state.ejercicio;
   const [texto, setTexto] = useState("");
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -142,8 +146,8 @@ const {
     console.log(values.videoFrontal)
     console.log(values)
     if(values.videoFrontal !== "" && values.videoPerfil !== ""){
-    //if(values.videoFrontal.length >= 1 && values.videoPerfil.length >= 1){
-      axios.post("https://localhost:8002/informes/crear",
+      setLoading(true);
+      axios.post("http://localhost:8002/informes/crear",
           {
               "idUsuario" : values.user._id.$oid, 
               "emailUsuario" : values.user.email,
@@ -151,9 +155,13 @@ const {
               "videoFrontal": values.videoFrontal,
               "idEjercicio": values.ej._id.$oid,        
           }).then(() => {
+              setLoading(false)
+              window.alert("Acabas de recibir un correo con el informe, gracias por la espera")
               navigate("/Ejercicios")
           }).catch((response) =>{
+              setLoading(false)
               console.log(response)
+              window.alert("Vuelve a intentar generar el informe, problemas de conexión")
           });
   }else {
     alert("ERROR, debes subir los dos vídeos antes de generar el informe")
@@ -244,6 +252,7 @@ const {
                 </Grid>
 
 
+
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
@@ -278,21 +287,37 @@ const {
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
-
                     <form onSubmit={handleSubmit(generarInforme)} onKeyPress={e => { e.which === 13 && e.preventDefault() }} noValidate>
-                    <Button
-                    type="submit"
-                    color="error"
-                    variant="outlined"    sx={{backgroundColor:  "black",
-                    fontFamily:   '"Segoe UI Symbol"',
-                    fontSize: "20px",
-                    height: "90px",
-                    width: "150px" }}
-                   
-                     >
-                   Generar informe
-                    </Button>
-                    </form>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    {loading ? (
+                      <ColorRing
+                      visible={true}
+                      height="80"
+                      width="80"
+                      ariaLabel="blocks-loading"
+                      wrapperStyle={{}}
+                      wrapperClass="blocks-wrapper"
+                      colors={['#b8c480', '#B2A3B5', '#F4442E', '#51E5FF', '#429EA6']}
+                      loading={true}
+                    />
+    ) : (
+      <Button
+        type="submit"
+        color="error"
+        variant="outlined" sx={{
+          backgroundColor: "black",
+          fontFamily: '"Segoe UI Symbol"',
+          fontSize: "20px",
+          height: "90px",
+          width: "150px"
+        }}
+      >
+        Generar informe
+      </Button>
+    )}
+  </div>
+</form>
+
 
 
 
@@ -310,6 +335,8 @@ const {
           </Grid>
         </Container>
       </Box> 
+
+      
     );
 
 }
