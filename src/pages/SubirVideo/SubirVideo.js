@@ -9,6 +9,8 @@ import { useLocation } from "react-router-dom";
 import { Box, Container, Button, Typography, Grid } from '@mui/material';
 import {ColorRing} from 'react-loader-spinner' ;
 import {  BeatLoader } from "react-spinners";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
 
@@ -146,7 +148,8 @@ const {
     console.log(values.videoFrontal)
     console.log(values)
     if(values.videoFrontal !== "" && values.videoPerfil !== ""){
-      setLoading(true);
+      window.alert("Recibirás un correo con un informe en lo próximo minutos, gracias por la espera.")
+      navigate("/Ejercicios")
       axios.post("http://localhost:8002/informes/crear",
           {
               "idUsuario" : values.user._id.$oid, 
@@ -154,14 +157,8 @@ const {
               "videoPerfil": values.videoPerfil,
               "videoFrontal": values.videoFrontal,
               "idEjercicio": values.ej._id.$oid,        
-          }).then(() => {
-              setLoading(false)
-              window.alert("Acabas de recibir un correo con el informe, gracias por la espera")
-              navigate("/Ejercicios")
           }).catch((response) =>{
-              setLoading(false)
               console.log(response)
-              window.alert("Vuelve a intentar generar el informe, problemas de conexión")
           });
   }else {
     alert("ERROR, debes subir los dos vídeos antes de generar el informe")
@@ -287,38 +284,22 @@ const {
                 <Grid item xs={4} md={4}>
                     <Box sx={item}>
                     <Typography  align= 'center' variant="h6" sx={{ my: 2, fontFamily: '"Segoe UI Symbol"' }}>
+
                     <form onSubmit={handleSubmit(generarInforme)} onKeyPress={e => { e.which === 13 && e.preventDefault() }} noValidate>
-  <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-    {loading ? (
-                      <ColorRing
-                      visible={true}
-                      height="80"
-                      width="80"
-                      ariaLabel="blocks-loading"
-                      wrapperStyle={{}}
-                      wrapperClass="blocks-wrapper"
-                      colors={['#b8c480', '#B2A3B5', '#F4442E', '#51E5FF', '#429EA6']}
-                      loading={true}
-                    />
-    ) : (
-      <Button
-        type="submit"
-        color="error"
-        variant="outlined" sx={{
-          backgroundColor: "black",
-          fontFamily: '"Segoe UI Symbol"',
-          fontSize: "20px",
-          height: "90px",
-          width: "150px"
-        }}
-      >
-        Generar informe
-      </Button>
-    )}
-  </div>
-</form>
-
-
+                    <Button
+                    type="submit"
+                    color="error"
+                    variant="outlined"    sx={{backgroundColor:  "black",
+                    fontFamily:   '"Segoe UI Symbol"',
+                    fontSize: "20px",
+                    height: "90px",
+                    width: "150px" }}
+                   
+                     >
+                   Generar informe
+                    </Button>
+                    </form>
+                    
 
 
 
