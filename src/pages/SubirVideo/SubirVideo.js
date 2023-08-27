@@ -43,12 +43,10 @@ function getTips () {
 
  
   ejercicio.tips.forEach(function(currentValue, index) {
-    if(currentValue==="PESODISTRIBUIDOENTODOELPIE"){
-     tipText+="Distribuya el peso en todo el pie, no únicamente en las puntillas o los talones.  "
-    }
+
 
     if(currentValue==="EXTENSIONRODILLAS"){
-      tipText += "Extienda completamente las rodillas al finalizar el movimiento. "
+      tipText += "Extienda completamente las rodillas, es decir, busca estirarlas al completo. " 
     }
     if(currentValue==="ANCHURAPIESHOMBROS"){
       tipText+="Anchura de los pies a la altura de los hombros. "
@@ -60,10 +58,10 @@ function getTips () {
       tipText+="Anchura del agarre de la barra cerrado. ";
     }
     if(currentValue==="EXTENSIONCADERA"){
-      tipText+="Extienda completamente la cadera al finalizar el movimiento. "
+      tipText+="Extienda completamente la cadera. "
     }
     if(currentValue==="EXTENSIONCOMPLETACODOS"){
-      tipText+="Recuerde realizar la extensión completa de codos al finalizar el movimiento. "
+      tipText+="Recuerde realizar la extensión completa de codos (brazos estirados al completo). "
     }
     if(currentValue==="BARRAPEGADACUERPO"){
       tipText+="En todo momento busque que la barra esté lo más cerca posible del cuerpo. ";
@@ -81,7 +79,7 @@ function getTips () {
       tipText+="En posición de inicio la barra debe estar apoyada en los hombros. "
     }
     if(currentValue==="CODOSALTOSPOSICIONFRONTRACK"){
-      tipText+="Los codos deben están altos en la posición de inicio. "
+      tipText+="Los codos deben están altos."
     }
     if(currentValue==="BARRASUBEVERTICALMENTE"){
       tipText+="La barra debe subir verticalmente. Para ello los codos siempre deben estar por delante de la barra. "
@@ -90,7 +88,7 @@ function getTips () {
       tipText+="Baje profundamente. Sobrepase los 90 grados. "
     }
     if(currentValue==="SACARCABEZA"){
-      tipText+="Saque la cabeza al finalizar el movimiento, es decir los hombros deben quedar por detrás de la oreja. "
+      tipText+="Saque la cabeza al finalizar el movimiento, es decir, los hombros deben quedar por detrás de la oreja. "
     }
   
 
@@ -213,22 +211,25 @@ const {
                         - El movimiento a realizar es el <b>{ejercicio.nombre} </b> 
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"  align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - Deberás grabarte dos vídeos : uno de <b>perfil </b> y otro de <b>frente a la cámara. Ambos con la cámara frontal de tu móvil</b>
+                        - Deberás grabarte dos vídeos : uno de <b>perfil </b> y otro de <b>frente a la cámara</b>. Ambos con la <b>cámara frontal de tu móvil.</b>
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"  align='center'  variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        -Situese a <b>3</b> metros de distancia de la cámara. Sólo debe aparecer una persona  en el vídeo
+                        -Situese a <b>3</b> metros de distancia de la cámara. Sólo debe aparecer una persona en el vídeo.
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
                         - Colócate en el <b> centro </b> del vídeo y sitúa el móvil en el suelo. Asegúrate de que esté recto.
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - En el vídeo de perfil, haz que tu lado  <b>izquierdo</b> sea el más cercano a la cámara.
+                        - En el vídeo de perfil, haz que tu lado  <b>derecho</b> sea el más cercano a la cámara. 
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - No pulse generar informe hasta que no haya subido ambos vídeos
+                    - Intente realizar el movimiento con zapatillas planas.
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                        - El vídeo debe <b>comenzar justo en el momento en el que comienza el movimiento </b>y <b>terminar justo en el momento en el que finaliza el movimiento</b>. Recorte el vídeo si es necesario.
+                        - No pulse generar informe hasta que no haya subido ambos vídeos.
+                    </Typography>
+                    <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
+                        - El vídeo debe <b>comenzar justo en el momento en el que comienza el movimiento </b>y <b>terminar justo en el momento en el que finaliza el movimiento.</b>. Recorte el vídeo si es necesario.
                     </Typography>
                    
 

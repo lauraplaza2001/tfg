@@ -85,9 +85,7 @@ const InfoEjercicio = ({usuario }) => {
           
            
             ejercicio.tips.forEach(function(currentValue, index) {
-              if(currentValue==="PESODISTRIBUIDOENTODOELPIE"){
-               tipText+="Distribuya el peso en todo el pie. "
-              }
+
           
               if(currentValue==="ANCHURAPIESCADERA"){
                 tipText += "Anchura de los pies a la altura de las caderas. "
@@ -120,9 +118,8 @@ const InfoEjercicio = ({usuario }) => {
               if(currentValue==="MANTENERESPALDARECTADESDENOSUELO"){
                 tipText+="Manten la espalda recta."
               }
-              if(currentValue==="BARRAAPOYADAHOMBROS"){
-                tipText+="En posición de inicio la barra debe estar apoyada en los hombros. "
-              }
+
+              
               if(currentValue==="CODOSALTOSPOSICIONFRONTRACK"){
                 tipText+="Los codos deben están altos en la posición de inicio. "
               }

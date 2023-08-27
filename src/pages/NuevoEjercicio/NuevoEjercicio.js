@@ -98,9 +98,7 @@ const NuevoEjercicio = ({user,tips,dificultades,gruposMusculares}) => {
                     "tips" : values.tips,
                     "gruposMusculares" : values.gruposMusculares,
                 }).then(() => {
-                    <Alert variant="filled" severity="success">
-                    Ejercicio creado con éxito
-                    </Alert>
+                    alert("Ejercicio creado con éxito")
                     navigate("/AdminEjercicios")
                 }).catch((response) =>{
                     console.log(response);
@@ -119,7 +117,7 @@ const NuevoEjercicio = ({user,tips,dificultades,gruposMusculares}) => {
         foto: Yup.string().required("Enlace a foto obligatorio"),
         video: Yup.string().required("Enlace a vídeo obligatorio"),
         nombre: Yup.string().required("Nombre obligatorio").min(1,"").max(20, "20 caracteres máximo"),                                                                          // eslint-disable-line
-        descripcion: Yup.string().required("Descripción Obligatoria").min(20, "20 caracteres mínimo").max(200, "200 caracteres máximo"),                                              // eslint-disable-line
+        descripcion: Yup.string().required("Descripción Obligatoria").min(20, "20 caracteres mínimo").max(400, "200 caracteres máximo"),                                              // eslint-disable-line
         dificultad: Yup.string().required('Seleccione un nivel de dificultad')
     });
 

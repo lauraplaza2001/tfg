@@ -75,7 +75,7 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
     const editarEjercicio = (data) => {
         console.log("hola")
 
-        if (values.gruposMusculares.length >= 1  && values.tips.length >= 1 )
+        if (values.gruposMusculares.length >= 1  && values.tips.length >= 1 && values.video.length >=1 && values.foto.length >= 1 )
             {        
             console.log(values)
  
@@ -99,17 +99,17 @@ const ModificarEjercicio = ({tips,dificultades,gruposMusculares,user}) => {
                
                 });
             }else {
-                alert("Error seleccione al menos un tip y y un grupo muscular")
+                alert("Error rellene todos los campos correctamente")
             }
     
     };
 
 
     const validationSchema = Yup.object().shape({
-        foto: Yup.string().required("Enlace a foto obligatorio"),
-        video: Yup.string().required("Enlace a vídeo obligatorio"),
+        foto: Yup.string().required("Enlace a foto obligatorio").min(1,""),
+        video: Yup.string().required("Enlace a vídeo obligatorio").min(1,""),
         nombre: Yup.string().required("Nombre obligatorio").min(1,"").max(20, "20 caracteres máximo"),                                                                          // eslint-disable-line
-        descripcion: Yup.string().required("Descripción Obligatoria").min(20, "20 caracteres mínimo"),                                              // eslint-disable-line
+        descripcion: Yup.string().required("Descripción Obligatoria").min(20, "400 caracteres mínimo"),                                              // eslint-disable-line
         dificultad: Yup.string().required('Seleccione un nivel de dificultad')
     });
 
