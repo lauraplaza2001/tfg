@@ -223,7 +223,7 @@ const {
                         - En el vídeo de perfil, haz que tu lado  <b>derecho</b> sea el más cercano a la cámara. 
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
-                    - Intente realizar el movimiento con zapatillas planas.
+                    - Asegurese de que el ejercicio comienza justo al comienzo del vídeo y que acaba justo al acabar el vídeo.
                     </Typography>
                     <Typography backgroundColor="#E9E2E2"   align='center' variant="h6" sx={{ my: 0, fontFamily: '"Segoe UI Symbol"' }}>
                         - No pulse generar informe hasta que no haya subido ambos vídeos.
