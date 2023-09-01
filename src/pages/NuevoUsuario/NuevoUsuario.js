@@ -70,7 +70,7 @@ const NuevoUsuario = ({roles, user}) => {
                 console.log(values.rol)
 
     
-                axios.post("http://localhost:8000/usuarios/crear2",
+                axios.post("http://localhost:8000/usuarios/crear",
                     {
                         "nombre" : values.nombre,
                         "email" : values.email,

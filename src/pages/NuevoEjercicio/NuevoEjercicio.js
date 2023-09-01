@@ -28,7 +28,6 @@ const NuevoEjercicio = ({user,tips,dificultades,gruposMusculares}) => {
          alert("Por favor, inicie sesión")
          navigate("/")
        }
-       
         
           });
 
